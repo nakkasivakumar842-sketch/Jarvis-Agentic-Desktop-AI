@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>JARVIS Core</title>
+    <style>
+        :root {
+            /* Upgraded to Brilliant Deep Blue & Cyan */
+            --holo-cyan: #00e5ff;
+            --holo-blue: #0044ff;
+            --holo-core: #e0f7fa;
+            --bg-glass: rgba(2, 6, 12, 0.6);
+        }
+
+        /* BRUTE-FORCE TRANSPARENCY OVERRIDE */
+        html, body {
+            background: transparent !important;
+            background-color: rgba(0, 0, 0, 0) !important;
+            margin: 0; padding: 0;
+            overflow: hidden;
+            width: 100vw; height: 100vh;
+            font-family: 'Consolas', monospace;
+            user-select: none;
+        }
+
+        #widget-container {
+            display: flex; flex-direction: column; align-items: center;
+            width: 100%; height: 100%; padding-top: 30px;
+        }
+
+        /* --- BRIGHT BLUE ORB --- */
+        #orb {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            /* Deep blue base with a glowing center */
+            background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.9), rgba(0, 68, 255, 0.4), transparent 75%);
+            box-shadow: 
+                0 0 30px rgba(0, 68, 255, 0.6), 
+                inset 0 0 25px rgba(0, 229, 255, 1);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; cursor: pointer;
+            -webkit-app-region: drag; /* Allows moving the window */
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 25px var(--holo-blue));
+        }
+
+        #orb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px var(--holo-cyan), inset 0 0 40px var(--holo-core);
+        }
+
+        /* Holographic Spinning Rings */
+        .ring {
+            position: absolute; border-radius: 50%;
+            border: 2px solid transparent; pointer-events: none;
+        }
+        .ring-outer {
+            width: 140px; height: 140px;
+            border-top: 3px solid var(--holo-blue);
+            border-bottom: 3px solid var(--holo-cyan);
+            animation: spin 3s linear infinite;
+        }
+        .ring-inner {
+            width: 90px; height: 90px;
+            border-left: 3px dashed var(--holo-core);
+            border-right: 3px dashed var(--holo-blue);
+            animation: spin 4s linear infinite reverse;
+        }
+        
+        /* The extremely bright center */
+        .core {
+            width: 35px; height: 35px;
+            background: var(--holo-core); border-radius: 50%;
+            box-shadow: 0 0 30px #fff, 0 0 50px var(--holo-cyan);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* --- OPERATIONS PANEL --- */
+        #operations-panel {
+            margin-top: 35px;
+            width: 320px; height: 260px;
+            background: var(--bg-glass);
+            border: 1px solid rgba(0, 100, 255, 0.4);
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(0, 229, 255, 0.15);
+            display: none; flex-direction: column; padding: 15px;
+            -webkit-app-region: no-drag;
+            backdrop-filter: blur(12px);
+            animation: dropDown 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        #status-header {
+            font-size: 14px; font-weight: bold; letter-spacing: 4px;
+            color: var(--holo-cyan); text-align: center;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+            padding-bottom: 10px; margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--holo-blue);
+        }
+
+        #console-log {
+            flex: 1; overflow-y: auto;
+            font-size: 12px; line-height: 1.6; color: #d0f8ff;
+        }
+        
+        .log-entry { margin-bottom: 6px; text-shadow: 0 0 4px rgba(0, 229, 255, 0.4); }
+        .log-time { color: var(--holo-blue); margin-right: 8px; font-size: 10px; }
+
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-thumb { background: var(--holo-blue); border-radius: 3px; }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: scale(0.8); opacity: 0.9; } 50% { transform: scale(1.2); opacity: 1; } }
+        @keyframes dropDown { from { opacity: 0; transform: translateY(-20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    </style>
+</head>
+<body>
+
+    <div id="widget-container">
+        <div id="orb" onclick="togglePanel()">
+            <div class="ring ring-outer"></div>
+            <div class="ring ring-inner"></div>
+            <div class="core"></div>
+        </div>
+
+        <div id="operations-panel">
+            <div id="status-header">SYSTEM // ONLINE</div>
+            <div id="console-log">
+                <div class="log-entry"><span class="log-time">[00:00:01]</span> Alpha Channel Overridden.</div>
+                <div class="log-entry"><span class="log-time">[00:00:02]</span> Core Matrix Online...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePanel() {
+            const panel = document.getElementById('operations-panel');
+            if (panel.style.display === 'flex') {
+                panel.style.display = 'none';
+            } else {
+                panel.style.display = 'flex';
+                panel.style.animation = 'none';
+                panel.offsetHeight; 
+                panel.style.animation = null; 
+            }
+        }
+    </script>
+</body>
+</html>
