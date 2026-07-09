@@ -14,7 +14,7 @@ Jarvis is a highly advanced, multi-modal desktop AI assistant engineered from th
 Unlike standard chat wrappers, Jadaal is built on an **agentic cyclical workflow** and runs **100% locally and offline**. It can perceive its environment (Optical Screen Awareness), remember past interactions (Vector Memory), and execute physical actions on the host Windows machine (PowerShell/UI Automation) entirely hands-free, without relying on external API keys.
 
 <p align="center">
-  <i>(Insert a GIF or image of your holographic UI here!)</i>
+  <i></i>
 </p>
 
 ## 🚀 Key Architectural Features
