@@ -1,7 +1,4 @@
-# Jarvis-Agentic-Desktop-AI
-Jarvis is a free, fully autonomous AI desktop assistant built in Python. Powered by Llama 3 and LangGraph, it acts as a proactive agent. It listens offline, speaks instantly, and reads your screen using OCR. It physically controls your PC using PowerShell to manage apps, operating through a custom holographic desktop interface.
-
-# 🧠 Jarvis : Local Agentic AI Desktop Assistant
+Jarvis : Local Agentic AI Desktop Assistant
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Llama 3](https://img.shields.io/badge/Llama_3-0466C8?style=for-the-badge&logo=meta&logoColor=white)
@@ -43,8 +40,8 @@ Unlike standard chat wrappers, Jadaal is built on an **agentic cyclical workflow
 * [Ollama](https://ollama.com/) installed locally to run the Llama 3 model.
 * Tesseract OCR drivers installed locally (Default path: `C:\Program Files\Tesseract-OCR\tesseract.exe`).
 
-1. Clone the repository and install the dependencies:
-
+1. **Clone the repository and install the dependencies:**
+   
    git clone [https://github.com/YourUsername/Jadaal-Agentic-AI.git](https://github.com/YourUsername/Jadaal-Agentic-AI.git)
    cd Jadaal-Agentic-AI
    python -m venv venv
